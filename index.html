@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weladahlah Community</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+        
+        :root {
+            --primary: #8844FF;
+            --secondary: #FF4466;
+            --accent: #44CCFF;
+            --dark: #151525;
+            --light: #F5F5FF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            display: flex;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+        }
+        
+        .logo::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 10px;
+        }
+        
+        main {
+            padding: 2rem 0;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+        
+        .platforms {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .platform-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 500px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .platform-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .platform-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+        }
+        
+        .discord-card::before {
+            background: linear-gradient(to right, #8844FF, #B344FF);
+        }
+        
+        .whatsapp-card::before {
+            background: linear-gradient(to right, #25D366, #128C7E);
+        }
+        
+        .platform-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+        
+        .platform-icon {
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+        
+        .discord-icon {
+            background: linear-gradient(135deg, #8844FF, #B344FF);
+            color: white;
+        }
+        
+        .whatsapp-icon {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+        }
+        
+        .platform-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .discord-title {
+            color: #B344FF;
+        }
+        
+        .whatsapp-title {
+            color: #25D366;
+        }
+        
+        .platform-content {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .platform-content p {
+            margin-bottom: 1rem;
+        }
+        
+        .platform-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .platform-cta {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            color: white;
+            margin-top: 1rem;
+        }
+        
+        .discord-cta {
+            background: linear-gradient(to right, #8844FF, #B344FF);
+            box-shadow: 0 5px 15px rgba(136, 68, 255, 0.3);
+        }
+        
+        .discord-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(136, 68, 255, 0.5);
+        }
+        
+        .whatsapp-cta {
+            background: linear-gradient(to right, #25D366, #128C7E);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .whatsapp-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+        }
+        
+        .highlight {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+        
+        .shape-1 {
+            top: 20%;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(136, 68, 255, 0.4);
+            animation: float 15s ease-in-out infinite;
+        }
+        
+        .shape-2 {
+            bottom: 10%;
+            right: 15%;
+            width: 400px;
+            height: 400px;
+            background-color: rgba(255, 68, 102, 0.3);
+            animation: float 20s ease-in-out infinite reverse;
+        }
+        
+        .shape-3 {
+            top: 50%;
+            right: 30%;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(68, 204, 255, 0.3);
+            animation: float 18s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translate(0px, 0px) scale(1);
+            }
+            33% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+            100% {
+                transform: translate(0px, 0px) scale(1);
+            }
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .platforms {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .platform-card {
+                max-width: 100%;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">WELADAHLAH</div>
+        </header>
+        
+        <main>
+            <section class="hero">
+                <h1>Join Komunitas Paling Seru!</h1>
+                <p>Tempat nongkrong virtual buat kamu yang pengen punya circle baru tanpa drama. Bebas, seru, dan pastinya bikin hari-hari kamu tambah asyik!</p>
+            </section>
+            
+            <section class="platforms">
+                <div class="platform-card discord-card">
+                    <div class="platform-header">
+                        <div class="platform-icon discord-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4C14.9 4.17 14.78 4.41 14.7 4.61C13.12 4.37 11.56 4.37 10 4.61C9.92 4.41 9.79 4.17 9.69 4C8.19 4.26 6.75 4.71 5.42 5.33C2.9 9.12 2.23 12.82 2.56 16.47C4.12 17.69 5.63 18.46 7.12 18.96C7.45 18.51 7.74 18.03 8 17.53C7.56 17.37 7.14 17.18 6.75 16.94C6.84 16.88 6.92 16.81 7 16.74C9.71 18 12.69 18 15.38 16.74C15.46 16.81 15.54 16.88 15.63 16.94C15.24 17.18 14.82 17.37 14.38 17.53C14.64 18.03 14.93 18.51 15.26 18.96C16.75 18.46 18.26 17.69 19.82 16.47C20.21 12.2 19.12 8.54 17.12 5.33H19.27ZM7.94 14.39C7.08 14.39 6.36 13.57 6.36 12.59C6.36 11.61 7.06 10.79 7.94 10.79C8.81 10.79 9.53 11.61 9.52 12.59C9.52 13.57 8.81 14.39 7.94 14.39ZM15.44 14.39C14.58 14.39 13.86 13.57 13.86 12.59C13.86 11.61 14.56 10.79 15.44 10.79C16.31 10.79 17.03 11.61 17.02 12.59C17.02 13.57 16.31 14.39 15.44 14.39Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="platform-title discord-title">Discord Weladahlah</div>
+                    </div>
+                    
+                    <div class="platform-content">
+                        <p>Cari temen ngobrol, mabar, curhat, atau nobar? Semua ada di Discord Weladahlah!</p>
+                        <p>Di sini <span class="highlight">no sirkel-sirkelan</span>, bebas temenan sama siapa aja.</p>
+                        <p>Nggak bakal dicuekin, karena semua welcome dan aktif!</p>
+                    </div>
+                    
+                    <a href="https://discord.gg/y8jYv2ZgJ7" class="platform-cta discord-cta">Gabung Discord Sekarang</a>
+                </div>
+                
+                <div class="platform-card whatsapp-card">
+                    <div class="platform-header">
+                        <div class="platform-icon whatsapp-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19.05 4.91C18.1332 3.98392 17.0412 3.24967 15.8376 2.75005C14.6341 2.25043 13.3431 1.99546 12.04 2C6.57999 2 2.12999 6.45 2.12999 11.91C2.12999 13.66 2.58999 15.36 3.44999 16.86L2.04999 22L7.29999 20.62C8.74999 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91ZM12.04 20.15C10.56 20.15 9.10999 19.75 7.83999 19L7.53999 18.82L4.41999 19.64L5.24999 16.61L5.04999 16.29C4.22773 14.977 3.79113 13.4592 3.79999 11.91C3.79999 7.37 7.49999 3.67 12.03 3.67C14.23 3.67 16.3 4.53 17.85 6.09C18.6175 6.85396 19.2257 7.76266 19.6394 8.76342C20.0531 9.76419 20.265 10.8362 20.26 11.92C20.29 16.46 16.59 20.15 12.04 20.15ZM16.56 13.99C16.31 13.87 15.09 13.28 14.87 13.19C14.64 13.1 14.48 13.06 14.31 13.31C14.14 13.56 13.67 14.11 13.53 14.27C13.39 14.44 13.24 14.46 12.99 14.33C12.74 14.21 11.94 13.94 11 13.1C10.26 12.44 9.76999 11.63 9.61999 11.38C9.47999 11.13 9.59999 11 9.72999 10.87C9.83999 10.76 9.97999 10.58 10.1 10.44C10.22 10.3 10.27 10.19 10.35 10.03C10.43 9.86 10.39 9.72 10.33 9.6C10.27 9.48 9.76999 8.26 9.56999 7.76C9.36999 7.28 9.15999 7.34 9.00999 7.33H8.52999C8.35999 7.33 8.09999 7.39 7.86999 7.64C7.64999 7.89 7.00999 8.49 7.00999 9.71C7.00999 10.93 7.89999 12.11 8.01999 12.27C8.13999 12.44 9.76999 14.94 12.25 16.01C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.69 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.03 14.27C16.96 14.16 16.81 14.11 16.56 13.99Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="platform-title whatsapp-title">Grup WhatsApp</div>
+                    </div>
+                    
+                    <div class="platform-content">
+                        <p>Mau yang lebih cepet & santai? Gabung ke WA aja!</p>
+                        <p>Bisa langsung chat admin, ngobrol random, cari temen baru, atau sekadar iseng ngetik.</p>
+                        <p><span class="highlight">Interaksi instan</span> dan bikin hari-hari kamu nggak boring!</p>
+                    </div>
+                    
+                    <a href="https://chat.whatsapp.com/C5DtNxqrwcF0saPMipLdBg" class="platform-cta whatsapp-cta">Join Grup WhatsApp</a>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            Weladahlah Community • Tempat Nongkrong Asik Tanpa Drama
+        </footer>
+    </div>
+    
+    <script>
+        // Efek hover tambahan
+        const cards = document.querySelectorAll('.platform-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05) 40%)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.background = 'rgba(255, 255, 255, 0.05)';
+            });
+        });
+    </script>
+</body>
+</html>
